@@ -1,0 +1,13 @@
+#Compiled code
+/dist
+# Dependency directory
+node_modules/
+
+# Environment variables
+.env
+
+# Backup files
+backups/
+
+# Log files
+logs/

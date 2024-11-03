@@ -1,0 +1,23 @@
+{
+  "name": "db-backup-cli",
+  "version": "1.0.0",
+  "description": "A command-line tool built with Node.js for performing backups and restores on multiple types of databases.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonasKhoza/db-backup-cli.git"
+  },
+  "author": "Jonas Khoza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonasKhoza/db-backup-cli/issues"
+  },
+  "homepage": "https://github.com/JonasKhoza/db-backup-cli#readme",
+  "dependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
