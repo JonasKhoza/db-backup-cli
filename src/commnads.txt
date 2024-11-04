@@ -1,0 +1,30 @@
+Usage: db-backup [options] [command]
+
+CLI tool for Database Backup and Restore Operations
+
+Options:
+  -V, --version             output the version number
+  -h, --help                display help for command
+
+Commands:
+  connect                   Test database connection
+    --db-type <type>        Database type (mysql, postgresql, mongodb, sqlite)
+    --host <host>           Database host
+    --port <port>           Database port
+    --user <user>           Database username
+    --password <password>   Database password
+    --database <name>       Database name
+
+  backup                    Backup database
+    --db-type <type>        Database type (mysql, postgresql, mongodb, sqlite)
+    --backup-type <type>    Backup type (full, incremental, differential)
+    --compress <method>     Compression method (gzip, zip)
+    --storage <type>        Storage type (local, s3, gcs, azure)
+    --schedule <frequency>  Set backup frequency (daily, weekly)
+
+  restore                   Restore database from a backup file
+    --db-type <type>        Database type (mysql, postgresql, mongodb, sqlite)
+    --file <path>           Path to the backup file
+    --tables <names>        Specific tables or collections to restore, comma-separated
+
+  help [command]            display help for command

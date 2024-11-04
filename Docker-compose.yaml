@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  db-backup-cli:
+    build:
+      context: . # Build from the current directory
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app # Mount the current directory to /app in the container
+    # command: ["/bin/sh", "-c", "tsc -w & npm start"]  # Command to run TypeScript compiler and nodemon
