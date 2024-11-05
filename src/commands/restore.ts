@@ -1,3 +1,3 @@
-const restoreCommand = () => {};
+// const restoreCommand = () => {};
 
-export default restoreCommand;
+// export default restoreCommand;

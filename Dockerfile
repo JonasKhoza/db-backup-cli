@@ -1,6 +1,10 @@
 # Use the official Node.js image from the Docker Hub
 FROM node:22-alpine
 
+# Install PostgreSQL client in order to run pg_dump command
+#Alpine Linux uses apk as its package manager instead of apt-get.
+RUN apk update && apk add postgresql-client
+
 # Set the working directory inside the container
 WORKDIR /app
 
