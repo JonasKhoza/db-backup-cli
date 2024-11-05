@@ -4,6 +4,8 @@ import { ConnectionInfoI } from "../models/database.model";
 
 //host => contains the cluster
 
+//IMPLEMETENT POSSIBILITIES OF NOT USING MONGODB ATLAS
+
 const mongodbConnect = async ({
   host,
   port,

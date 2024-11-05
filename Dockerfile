@@ -1,9 +1,24 @@
-# Use the official Node.js image from the Docker Hub
+#Microsoft does not provide a pre-built version of mssql-tools for Alpine Linux.
+# Stage 1: Install mssql-tools and dependencies
+FROM mcr.microsoft.com/mssql-tools:latest AS mssql-tools
+
+# Stage 2: Use the official Node.js image from the Docker Hub
 FROM node:22-alpine
 
-# Install PostgreSQL client in order to run pg_dump command
+# Copy sqlcmd and related tools from the mssql-tools stage
+COPY --from=mssql-tools /opt/mssql-tools/bin/sqlcmd /usr/local/bin/
+COPY --from=mssql-tools /opt/mssql-tools/bin/bcp /usr/local/bin/
+COPY --from=mssql-tools /opt/mssql-tools/bin/* /usr/local/bin/
+
+# Installing PostgreSQL client in order to run pg_dump command
 #Alpine Linux uses apk as its package manager instead of apt-get.
 RUN apk update && apk add postgresql-client
+
+# Installing mysql client in order to run pg_dump command
+RUN apk update && apt-get install -y mysql-client
+
+#Installing gzip for compression in some of my DBMS's bakup compression
+RUN apk update && apk install -y gzip
 
 # Set the working directory inside the container
 WORKDIR /app
