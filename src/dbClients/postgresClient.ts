@@ -1,4 +1,6 @@
 import { Pool, PoolClient } from "pg";
+import { exec } from "child_process";
+import path from "path";
 import { ConnectionInfoI } from "../models/database.model";
 
 const postgresConnect = async ({
@@ -34,4 +36,23 @@ const postgresConnect = async ({
   }
 };
 
-export default postgresConnect;
+const backupPostgresDB = async (options: any) => {
+  console.log(options);
+  // const backupFilePath = path.resolve(outputFilePath, `${database}_backup.sql`);
+
+  // // Constructing the pg_dump command
+  // const command = `PGPASSWORD=${password} pg_dump -U ${user} -h ${host} -p ${port} -F c -j 4 -Z 9 -f ${backupFilePath} ${database}`;
+
+  // return new Promise<void>((resolve, reject) => {
+  //   exec(command, (error, stdout, stderr) => {
+  //     if (error) {
+  //       reject(`Backup failed: ${stderr}`);
+  //     } else {
+  //       console.log("Backup completed successfully.");
+  //       resolve();
+  //     }
+  //   });
+  // });
+};
+
+export { postgresConnect, backupPostgresDB };

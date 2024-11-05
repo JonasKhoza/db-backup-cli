@@ -1,8 +1,8 @@
 import { DBConnectCommandI } from "../models/database.model";
-import postgresConnect from "../dbClients/postgresClient";
 import mysqlConnect from "../dbClients/mysqlClient";
 import mongodbConnect from "../dbClients/mongodbClient";
 import mssqlConnect from "../dbClients/mssqlClient";
+import { postgresConnect } from "../dbClients/postgresClient";
 
 const connectCommand = ({
   dbType,
