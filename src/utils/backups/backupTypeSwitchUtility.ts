@@ -30,6 +30,4 @@ const backupTypeSwitchUtility = (
   }
 };
 
-//4965580f6e3bd3355655a2ae0afcb03ea654fdba
-
 export default backupTypeSwitchUtility;
