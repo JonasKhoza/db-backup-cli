@@ -19,7 +19,10 @@ const restoreMssqlDB = async (commandOptions: RestoreCommandI) => {
   //Accounting on restoring specific tables
   if (commandOptions?.tables && commandOptions.tables.length > 0) {
     const tables = commandOptions.tables.split(",");
-    console.warn("You are only allowed to restore the whole backup in Mysql");
+
+    //MSSQL allows you to backup specific tables but not restore specific tables but the whole table.
+
+    console.warn("You are only allowed to restore the whole backup in MSSQL");
     console.log("Restoring the whole backup...");
   }
 
