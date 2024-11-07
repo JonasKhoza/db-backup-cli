@@ -1,21 +1,20 @@
-import { exec } from "child_process";
 import path from "path";
 import os from "os";
-
-import { BackupCommandI } from "../../models/database.model";
 import { format } from "date-fns";
+
+import { BackupCommandI } from "../../../models/database.model";
+import executeCommand from "../execHelper";
 
 const backupMongoDB = (commandOptions: BackupCommandI) => {
   const now = new Date();
   const formattedDate = format(now, "ddMMyyyyHHmmss");
 
-  console.log("backupPostgresDB", commandOptions);
   const tempDir = os.tmpdir();
 
-  //Creating the temp file to store the backup
+  /// Creating the temp file path for the backup
   const backupFilePath = path.resolve(
     tempDir,
-    `${commandOptions.database}_backup_${formattedDate}.sql.gz`
+    `${commandOptions.database}_backup_${formattedDate}.gz`
   );
 
   const ip_for_cont =
@@ -27,19 +26,13 @@ const backupMongoDB = (commandOptions: BackupCommandI) => {
     console.log("Backing up specific collections is not implemented yet!");
     console.log("Performing a full backup...");
   }
-  //compression level cannot be specified directly within the mongodump command itself.
-  const command = `mongodump --uri="mongodb://${commandOptions.user}:${commandOptions.password}@${commandOptions.host}:${commandOptions.port}/${commandOptions.database}" --gzip --out=${backupFilePath}`;
 
-  return new Promise<string>((resolve, reject) => {
-    exec(command, (error, stdout, stderr) => {
-      if (error) {
-        reject(`Backup failed: ${stderr}`);
-      } else {
-        console.log("Backup completed successfully.");
-        resolve(backupFilePath); // Resolve with the path of the backup file
-      }
-    });
-  });
+  //compression level cannot be specified directly within the mongodump command itself.
+  // Constructing the mongodump command
+  const command = `mongodump --uri="mongodb://${commandOptions.user}:${commandOptions.password}@${ip_for_cont}:${commandOptions.port}/${commandOptions.database}" --gzip --out=${backupFilePath}`;
+
+  //Execute the command
+  return executeCommand(command);
 };
 
 export default backupMongoDB;

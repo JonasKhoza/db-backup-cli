@@ -1,8 +1,9 @@
 #!/usr/bin/env node
+
 import { Command } from "commander";
 import connectCommand from "./commands/testConnection";
 import backupCommand from "./commands/backup";
-// import restoreCommand from "./commands/restore";
+import restoreCommand from "./commands/restore";
 
 const program = new Command();
 
@@ -40,12 +41,12 @@ program
   .requiredOption("--password <password>", "Database password")
   .requiredOption("--database <database>", "Database name")
   .requiredOption(
-    "--backup-type <type>",
-    "Backup type (e.g., full, incremental, differential)"
-  )
-  .requiredOption(
     "--storage <type>",
     "Storage type (e.g., local, s3, gcs, azure)"
+  )
+  .option(
+    "--backup-type <type>",
+    "Backup type (e.g., full, incremental, differential)"
   )
   .option(
     "-t, --tables <tables>",
@@ -84,24 +85,28 @@ program
   .option("--azure-account-key <key>", "Azure account key")
   .action(backupCommand);
 
-//   .option("--compress <type>", "Compression type (e.g., gzip, zip)")
+// Restore command with selective restore options
+program
+  .command("restore")
+  .description("Restore database from a backup file")
+  .requiredOption(
+    "--db-type <type>",
+    "Database type (mysql, postgresql, mongodb)"
+  )
+  .requiredOption("--file <path>", "Path to the backup file")
+  .requiredOption("--database <name>", "Name of the database to restore into")
+  .requiredOption("--host <host>", "Database host", "localhost")
+  .requiredOption("--port <port>", "Database port")
+  .requiredOption("--user <username>", "Database username")
+  .requiredOption("--password <password>", "Database password")
+  .option(
+    "--tables <names>",
+    "Specific tables or collections to restore, comma-separated (e.g., users, orders)"
+  )
+  .action(restoreCommand);
 
-// // Restore command with selective restore options
-// program
-//   .command("restore")
-//   .description("Restore database from a backup file")
-//   .requiredOption(
-//     "--db-type <type>",
-//     "Database type (mysql, postgresql, mongodb, sqlite)"
-//   )
-//   .requiredOption("--file <path>", "Path to the backup file")
-//   .option(
-//     "--tables <names>",
-//     "Specific tables or collections to restore, comma-separated"
-//   )
-//   .action(restoreCommand);
-
-console.log("Yes");
-console.log("Going twice!");
-console.log("Yah!");
 program.parse(process.argv);
+
+//Don't start writing the documentation until I tell you to
+
+//Write me a documentation

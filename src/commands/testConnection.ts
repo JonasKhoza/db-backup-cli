@@ -19,15 +19,6 @@ const connectCommand = ({
   password = String(password);
   database = String(database);
 
-  console.log("We're here", {
-    dbType,
-    port,
-    host,
-    user,
-    password,
-    database,
-  });
-
   switch (dbType.toLowerCase()) {
     case "postgresql":
       postgresConnect({ host, port, user, password, database })
@@ -58,8 +49,8 @@ const connectCommand = ({
       break;
     case "mssql":
       mssqlConnect({ host, port, user, password, database })
-        .then(() => {
-          console.log("Successfully connected to the mssql database");
+        .then((message) => {
+          console.log(message);
         })
         .catch((error) => {
           console.error("Connection failed:", error.message);
