@@ -1,20 +1,20 @@
 # db-backup-cli
 db-backup is a command-line tool (CLI) for database backup and restoration. It supports multiple databases (MySQL, PostgreSQL, MongoDB, MSSQL) and allows backup storage in various locations (local, AWS S3, Google Cloud Storage, and Azure Blob Storage).
 
- Note: Project is not yet fully completed and tested. Only PostgreSQL and MSSQL have been tested for all commands and work well.
+ #Note:# Project is not yet fully completed and tested. Only PostgreSQL and MSSQL have been tested for all commands and work well.
 
-Features
+#Features
     Database connection testing
     Flexible database backup options:
         (To be implemented):Full, incremental, or differential backups
         (Only PostgreSQL so far):Target specific tables/collections
         (Only locally so far):Multiple storage options
         (To be implemented): Backup scheduling(e.g., daily, monthly, yearly)
-    Restore functionality:
+    #Restore functionality:
         (Only PostgreSQL so far):Restore entire database or specific tables/collections
         Compatibility with multiple backup formats
 
-Supported Databases
+#Supported Databases
     MySQL
     PostgreSQL
     MongoDB
