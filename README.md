@@ -129,7 +129,7 @@ The CLI provides three primary commands: connect, backup, and restore, --help.
     
 
 Some tricky things found about MSSQL(e.g., permmissions, etc..) and others.
-Please refer to this Google Docs file: 
+Please refer to this Google Docs file: https://docs.google.com/document/d/1ucVwolvNKwF1n1AQs9vzaw13nxZQGvXihVi1cdQm28c/edit?usp=sharing
 
 **License**
 This project is licensed under the MIT License.
