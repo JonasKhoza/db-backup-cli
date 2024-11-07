@@ -41,9 +41,6 @@ Ensure the following tools are installed:
 
 Installation
 Clone the repository and install the dependencies:
-
-bash
-Copy code
 git clone https://github.com/JonasKhoza/db-backup-cli.git
 cd db-backup
 npm install
