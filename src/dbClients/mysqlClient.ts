@@ -28,12 +28,6 @@ const mysqlConnect = async ({
 
     connection = await pool.getConnection();
     console.log("Connected to MySQL database...");
-
-    // Uncomment if you want to execute a query
-    // const [rows, fields] = await connection.execute('SELECT * FROM your_table');
-    // console.log(rows);
-
-    // await connection.end();
   } catch (error: any) {
     throw new Error(`Failed to connect to database: ${error?.message}`);
   } finally {

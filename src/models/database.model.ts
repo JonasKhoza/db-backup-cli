@@ -28,13 +28,8 @@ export interface MSSqlConfig {
   };
 }
 
-export interface BackupCommandI {
+export interface BackupCommandI extends ConnectionInfoI {
   dbType: string;
-  port: number;
-  host: string;
-  user: string;
-  password: string;
-  database: string;
   backupType: string; // e.g., full, incremental, differential
   schedule?: string; // e.g., daily, weekly, optional
   storage: string; // e.g., local, s3, gcs, azure
@@ -59,4 +54,10 @@ export interface BackupCommandI {
   azureConnectionString?: string; // Connection string for Azure Blob Storage
   azureAccountKey?: string;
   azureAccountName?: string;
+}
+
+export interface RestoreCommandI extends ConnectionInfoI {
+  dbType: string;
+  tables?: string;
+  file: string;
 }

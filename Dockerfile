@@ -15,10 +15,11 @@ COPY --from=mssql-tools /opt/mssql-tools/bin/* /usr/local/bin/
 RUN apk update && apk add postgresql-client
 
 # Installing mysql client in order to run pg_dump command
-RUN apk update && apt-get install -y mysql-client
+#The use of add is just the standard convention in Alpine, and install is an alternative that has been kept for compatibility.
+RUN apk update && apk add mysql-client 
 
 #Installing gzip for compression in some of my DBMS's bakup compression
-RUN apk update && apk install -y gzip
+RUN apk update && apk add gzip
 
 # Set the working directory inside the container
 WORKDIR /app

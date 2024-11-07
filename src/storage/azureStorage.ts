@@ -1,3 +1,3 @@
 const saveToAzure = (backupFile: string, options: any) => {
-  // Azure Blob Storage upload logic here
+  // Azure Blob Storage upload logic
 };

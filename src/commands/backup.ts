@@ -1,10 +1,10 @@
-import backupPostgresDB from "../utils/postgresql/backupPostgresql";
+import backupPostgresDB from "../utils/backups/postgresql/backupPostgresql";
 import validateBackupCommandOptions from "../utils/backups/validateBackupCommandOptions";
 import { BackupCommandI } from "../models/database.model";
-import backupMysqlDB from "../utils/mysql/backupMysql";
-import backupMssqlDB from "../utils/mssql/backupMssql";
+import backupMysqlDB from "../utils/backups/mysql/backupMysql";
+import backupMssqlDB from "../utils/backups/mssql/backupMssql";
 import backupTypeSwitchUtility from "../utils/backups/backupTypeSwitchUtility";
-import backupMongoDB from "../utils/mongodb/backupMongodb";
+import backupMongoDB from "../utils/backups/mongodb/backupMongodb";
 
 const backupCommand = (commandOptions: BackupCommandI) => {
   //Validate Backup command data
