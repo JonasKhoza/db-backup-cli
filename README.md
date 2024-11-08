@@ -52,6 +52,7 @@ This will make the db-backup command available globally.
 
 **Usage**
 The CLI provides three primary commands: connect, backup, and restore, --help.
+Note: Ensure localhost is not pointing to your Docker container if you're not using Docker else, you can adjust as needed,
     1. Test Connection
     Test the connection to a database.
     db-backup connect --db-type <type> --host <host> --port <port> --user <user> --password <password> --database <database>
