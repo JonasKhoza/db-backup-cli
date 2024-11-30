@@ -106,7 +106,3 @@ program
   .action(restoreCommand);
 
 program.parse(process.argv);
-
-//Don't start writing the documentation until I tell you to
-
-//Write me a documentation

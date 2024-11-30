@@ -1,5 +1,6 @@
 import { BackupCommandI } from "../../models/database.model";
 import saveToLocalStorage from "../../storage/localStorage";
+import logger from "../logger";
 
 const backupTypeSwitchUtility = (
   commandOptions: BackupCommandI,
@@ -11,7 +12,8 @@ const backupTypeSwitchUtility = (
       if (commandOptions?.localPath && commandOptions?.localPath.length > 0) {
         saveToLocalStorage(backupFile, `${commandOptions?.localPath}`);
       } else {
-        console.error("Local path is not specified for local storage.");
+        //console.error("Local path is not specified for local storage.");
+        logger.error("Local path is not specified for local storage.");
       }
 
       break;
@@ -25,7 +27,8 @@ const backupTypeSwitchUtility = (
       //Store to Azure
       break;
     default:
-      console.log("Storage type indicated has not be implemented yet!");
+      //console.log("Storage type indicated has not be implemented yet!");
+      logger.warn("Storage type indicated has not be implemented yet!");
       break;
   }
 };

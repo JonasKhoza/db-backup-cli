@@ -1,4 +1,5 @@
 import { RestoreCommandI } from "../../../models/database.model";
+import logger from "../../logger";
 import executeCommand from "../execHelper";
 
 const restoreMssqlDB = async (commandOptions: RestoreCommandI) => {
@@ -20,12 +21,14 @@ const restoreMssqlDB = async (commandOptions: RestoreCommandI) => {
   if (commandOptions?.tables && commandOptions.tables.length > 0) {
     const tables = commandOptions.tables.split(",");
 
-    //MSSQL allows you to backup specific tables but not restore specific tables but the whole table.
+    //MSSQL allows you to backup specific tables but not restore specific tables but the whole backup.
 
-    console.warn("You are only allowed to restore the whole backup in MSSQL");
-    console.log("Restoring the whole backup...");
+    //console.warn("You are only allowed to restore the whole backup in MSSQL");
+    logger.warn("You are only allowed to restore the whole backup in MSSQL");
+    //console.log("Restoring the whole backup...");
+    logger.info("Restoring the whole backup...");
   }
-
+  //SQL Server automatically decompresses the backup file during the restore process.
   // Final SQLCMD command to execute the restore
   const command = `sqlcmd -S ${ip_for_cont}${providedPort} -U ${commandOptions.user} -P ${commandOptions.password} -Q "${restoreCommand}"`;
 

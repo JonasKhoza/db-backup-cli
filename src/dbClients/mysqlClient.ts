@@ -1,5 +1,6 @@
 import { createPool, Pool, PoolConnection } from "mysql2/promise";
 import { ConnectionInfoI } from "../models/database.model";
+import logger from "../utils/logger";
 
 const mysqlConnect = async ({
   host,
@@ -27,7 +28,8 @@ const mysqlConnect = async ({
     });
 
     connection = await pool.getConnection();
-    console.log("Connected to MySQL database...");
+    //console.log("Connected to MySQL database...");
+    logger.info("Connected to MySQL database...");
   } catch (error: any) {
     throw new Error(`Failed to connect to database: ${error?.message}`);
   } finally {

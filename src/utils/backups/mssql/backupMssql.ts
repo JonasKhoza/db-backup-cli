@@ -4,6 +4,7 @@ import os from "os";
 
 import { BackupCommandI } from "../../../models/database.model";
 import executeCommand from "../execHelper";
+import logger from "../../logger";
 
 const backupMssqlDB = async (commandOptions: BackupCommandI) => {
   const now = new Date();
@@ -23,8 +24,10 @@ const backupMssqlDB = async (commandOptions: BackupCommandI) => {
 
   //Checking if there were specific tables provided
   if (commandOptions?.tables && commandOptions.tables.length > 0) {
-    console.log("Backing up specific tables is not implemented yet!");
-    console.log("Performing a full backup...");
+    //console.log("Backing up specific tables is not implemented yet!");
+    logger.info("Backing up specific tables is not implemented yet!");
+    //console.log("Performing a full backup...");
+    logger.info("Performing a full backup...");
   }
 
   /*

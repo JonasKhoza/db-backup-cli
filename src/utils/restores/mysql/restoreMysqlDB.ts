@@ -2,6 +2,7 @@ import { exec } from "child_process";
 
 import { RestoreCommandI } from "../../../models/database.model";
 import executeCommand from "../execHelper";
+import logger from "../../logger";
 
 /*
 Because I used mysqldump with .sql format, mysql command-line tool is ideal for restoring such, which is designed for restoring .sql files created by mysqldump
@@ -22,8 +23,10 @@ const restoreMysqlDB = (commandOptions: RestoreCommandI) => {
   // Accounting for restoring specific tables
   if (commandOptions?.tables && commandOptions.tables.length > 0) {
     const tables = commandOptions.tables.split(",");
-    console.warn("You are only allowed to restore the whole backup in Mysql");
-    console.log("Restoring the whole backup...");
+    logger.warn("You are only allowed to restore the whole backup in Mysql");
+    //console.warn("You are only allowed to restore the whole backup in Mysql");
+    //console.log("Restoring the whole backup...");
+    logger.info("Restoring the whole backup...");
   }
 
   return executeCommand(command);

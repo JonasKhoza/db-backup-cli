@@ -4,6 +4,7 @@ import { format } from "date-fns";
 
 import { BackupCommandI } from "../../../models/database.model";
 import executeCommand from "../execHelper";
+import logger from "../../logger";
 
 const backupMongoDB = (commandOptions: BackupCommandI) => {
   const now = new Date();
@@ -23,8 +24,10 @@ const backupMongoDB = (commandOptions: BackupCommandI) => {
       : commandOptions.host;
   //Checking if there were specific collections provided
   if (commandOptions?.tables && commandOptions.tables.length > 0) {
-    console.log("Backing up specific collections is not implemented yet!");
-    console.log("Performing a full backup...");
+    //console.log("Backing up specific collections is not implemented yet!");
+    logger.info("Backing up specific collections is not implemented yet!");
+    //console.log("Performing a full backup...");
+    logger.info("Performing a full backup...");
   }
 
   //compression level cannot be specified directly within the mongodump command itself.

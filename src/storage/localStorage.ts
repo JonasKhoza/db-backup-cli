@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import logger from "../utils/logger";
 
 const saveToLocalStorage = (backupPath: string, localPath: string) => {
   const destinationPath = path.join(localPath, path.basename(backupPath));
@@ -26,7 +27,8 @@ const saveToLocalStorage = (backupPath: string, localPath: string) => {
     fs.copyFileSync(backupPath, destinationPath);
   }
 
-  console.log(`Successfully saved the backup to ${destinationPath}`);
+  //console.log(`Successfully saved the backup to ${destinationPath}`);
+  logger.info(`Successfully saved the backup to ${destinationPath}`);
 };
 
 export default saveToLocalStorage;

@@ -4,6 +4,7 @@ import os from "os";
 
 import { format } from "date-fns";
 import { BackupCommandI } from "../../../models/database.model";
+import logger from "../../logger";
 
 /*
   *Compressed using built-in gzip at level 9 (maximum compression).
@@ -50,7 +51,8 @@ const backupPostgresDB = async (commandOptions: BackupCommandI) => {
         if (error) {
           reject(`Backup failed: ${stderr}`);
         } else {
-          console.log("Backup completed successfully.", backupDirPath);
+          //console.log("Backup completed successfully.", backupDirPath);
+          logger.info("Backup completed successfully.", backupDirPath);
           resolve(backupDirPath);
         }
       }

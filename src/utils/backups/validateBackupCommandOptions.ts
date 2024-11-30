@@ -1,8 +1,10 @@
 import { BackupCommandI } from "../../models/database.model";
+import logger from "../logger";
 
 const validateBackupCommandOptions = (commandOptions: BackupCommandI) => {
   if (commandOptions.storage === "local" && !commandOptions.localPath) {
-    console.error("Error: --local-path is required for local storage.");
+    //console.error("Error: --local-path is required for local storage.");
+    logger.error("Error: --local-path is required for local storage.");
     process.exit(1);
   } else if (
     commandOptions.storage === "s3" &&
@@ -11,7 +13,10 @@ const validateBackupCommandOptions = (commandOptions: BackupCommandI) => {
       !commandOptions.s3SecretKey ||
       !commandOptions.s3Region)
   ) {
-    console.error(
+    // console.error(
+    //   "Error: S3 storage requires --s3-bucket, --s3-access-key, --s3-secret-key, and --s3-region."
+    // );
+    logger.error(
       "Error: S3 storage requires --s3-bucket, --s3-access-key, --s3-secret-key, and --s3-region."
     );
     process.exit(1);
@@ -19,7 +24,10 @@ const validateBackupCommandOptions = (commandOptions: BackupCommandI) => {
     commandOptions.storage === "gcs" &&
     (!commandOptions.gcsBucket || !commandOptions.gcsKeyFile)
   ) {
-    console.error(
+    // console.error(
+    //   "Error: GCS storage requires --gcs-bucket and --gcs-key-file."
+    // );
+    logger.error(
       "Error: GCS storage requires --gcs-bucket and --gcs-key-file."
     );
     process.exit(1);
@@ -29,13 +37,17 @@ const validateBackupCommandOptions = (commandOptions: BackupCommandI) => {
       !commandOptions.azureAccountName ||
       !commandOptions.azureAccountKey)
   ) {
-    console.error(
+    // console.error(
+    //   "Error: Azure storage requires --azure-container, --azure-account-name, and --azure-account-key."
+    // );
+    logger.error(
       "Error: Azure storage requires --azure-container, --azure-account-name, and --azure-account-key."
     );
     process.exit(1);
   }
   if (commandOptions.storage === "local" && !commandOptions.localPath) {
-    console.error("Error: --local-path is required for local storage.");
+    //console.error("Error: --local-path is required for local storage.");
+    logger.error("Error: --local-path is required for local storage.");
     process.exit(1);
   } else if (
     commandOptions.storage === "s3" &&
@@ -44,7 +56,10 @@ const validateBackupCommandOptions = (commandOptions: BackupCommandI) => {
       !commandOptions.s3SecretKey ||
       !commandOptions.s3Region)
   ) {
-    console.error(
+    // console.error(
+    //   "Error: S3 storage requires --s3-bucket, --s3-access-key, --s3-secret-key, and --s3-region."
+    // );
+    logger.error(
       "Error: S3 storage requires --s3-bucket, --s3-access-key, --s3-secret-key, and --s3-region."
     );
     process.exit(1);
@@ -52,7 +67,10 @@ const validateBackupCommandOptions = (commandOptions: BackupCommandI) => {
     commandOptions.storage === "gcs" &&
     (!commandOptions.gcsBucket || !commandOptions.gcsKeyFile)
   ) {
-    console.error(
+    // console.error(
+    //   "Error: GCS storage requires --gcs-bucket and --gcs-key-file."
+    // );
+    logger.error(
       "Error: GCS storage requires --gcs-bucket and --gcs-key-file."
     );
     process.exit(1);
@@ -62,7 +80,10 @@ const validateBackupCommandOptions = (commandOptions: BackupCommandI) => {
       !commandOptions.azureAccountName ||
       !commandOptions.azureAccountKey)
   ) {
-    console.error(
+    // console.error(
+    //   "Error: Azure storage requires --azure-container, --azure-account-name, and --azure-account-key."
+    // );
+    logger.error(
       "Error: Azure storage requires --azure-container, --azure-account-name, and --azure-account-key."
     );
     process.exit(1);

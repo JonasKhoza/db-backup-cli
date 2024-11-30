@@ -5,6 +5,7 @@ import backupMysqlDB from "../utils/backups/mysql/backupMysql";
 import backupMssqlDB from "../utils/backups/mssql/backupMssql";
 import backupTypeSwitchUtility from "../utils/backups/backupTypeSwitchUtility";
 import backupMongoDB from "../utils/backups/mongodb/backupMongodb";
+import logger from "../utils/logger";
 
 const backupCommand = (commandOptions: BackupCommandI) => {
   //Validate Backup command data
@@ -18,7 +19,8 @@ const backupCommand = (commandOptions: BackupCommandI) => {
           backupTypeSwitchUtility(commandOptions, backupFile);
         })
         .catch((error) => {
-          console.error(`Error during backup: ${error}`);
+          // console.error(`Error during backup: ${error}`);
+          logger.error(`Error during backup: ${error}`);
         });
       break;
     case "mysql":
@@ -28,7 +30,8 @@ const backupCommand = (commandOptions: BackupCommandI) => {
           backupTypeSwitchUtility(commandOptions, backupFile);
         })
         .catch((error) => {
-          console.error(`Error during backup: ${error}`);
+          //console.error(`Error during backup: ${error}`);
+          logger.error(`Error during backup: ${error}`);
         });
       break;
     case "mongodb":
@@ -38,7 +41,8 @@ const backupCommand = (commandOptions: BackupCommandI) => {
           backupTypeSwitchUtility(commandOptions, backupFile);
         })
         .catch((error) => {
-          console.error(`Error during backup: ${error}`);
+          //console.error(`Error during backup: ${error}`);
+          logger.error(`Error during backup: ${error}`);
         });
       break;
     case "mssql":
@@ -48,11 +52,15 @@ const backupCommand = (commandOptions: BackupCommandI) => {
           backupTypeSwitchUtility(commandOptions, backupFile);
         })
         .catch((error) => {
-          console.error(`Error during backup: ${error}`);
+          //console.error(`Error during backup: ${error}`);
+          logger.error(`Error during backup: ${error}`);
         });
       break;
     default:
-      console.log(
+      // console.log(
+      //   `Database for ${commandOptions.dbType} is not implemented yet.`
+      // );
+      logger.warn(
         `Database for ${commandOptions.dbType} is not implemented yet.`
       );
   }

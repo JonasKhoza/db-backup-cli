@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import { MongoClient, ConnectOptions } from "mongodb";
 
 import { ConnectionInfoI } from "../models/database.model";
+import logger from "../utils/logger";
 
 //host => contains the cluster
 
@@ -40,10 +41,12 @@ const mongodbConnect = async ({
         socketTimeoutMS: 120000, //Connection will close after being idle for 1minute
       } as mongoose.ConnectOptions);
 
-      console.log("Connected to MongoDB  database...");
+      //console.log("Connected to MongoDB  database...");
+      logger.info("Connected to MongoDB  database...");
     } else {
       await client.connect();
-      console.log("Connected successfully to MongoDB");
+      //console.log("Connected successfully to MongoDB");
+      logger.info("Connected successfully to MongoDB");
     }
   } catch (error: any) {
     throw new Error(`Failed to connect to database: ${error?.message}`);

@@ -23,6 +23,7 @@ const restorePostresDB = (commandOptions: RestoreCommandI) => {
   }
 
   //Executing the command
+  //Due to -F d option (directory format), pg_restore automaticaly decompress
   return executeCommand(command);
 };
 
