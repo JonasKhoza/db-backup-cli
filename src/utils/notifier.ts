@@ -107,14 +107,68 @@ const sendEmail = async (
 
     let locationPath = "";
     if (backupLocation) {
-      locationPath =
-        "<li><strong>Backup Location:</strong> ${backupLocation}</li>";
+      locationPath = `<li><strong>Backup Location:</strong> ${backupLocation}</li>`;
     }
 
     //Email body html tempate
     const htmlTemplate = `
     <!DOCTYPE html>
     <html lang="en">
+    <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backup Notification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .header {
+      background-color: #4CAF50;
+      color: #ffffff;
+      text-align: center;
+      padding: 15px 20px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .content {
+      padding: 20px;
+    }
+    .content p {
+      margin: 0 0 10px;
+      line-height: 1.5;
+    }
+    .content .status {
+      font-weight: bold;
+      color: #4CAF50;
+    }
+    .footer {
+      background-color: #f4f4f9;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      color: #777;
+    }
+    .footer a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+  </style>
+</head>
     <body>
       <div class="email-container">
         <div class="header">
