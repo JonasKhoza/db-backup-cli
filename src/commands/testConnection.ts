@@ -68,6 +68,7 @@ const connectCommand = ({
     default:
       //console.log(`Connection testing for ${dbType} is not implemented yet.`);
       logger.warn(`Connection testing for ${dbType} is not implemented yet.`);
+      process.exit(1);
   }
 };
 

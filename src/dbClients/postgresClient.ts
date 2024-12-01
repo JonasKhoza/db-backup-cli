@@ -11,11 +11,11 @@ const postgresConnect = async ({
   let client: PoolClient | null = null;
   let pool: Pool | null = null;
   try {
+    // === "localhost" || host === "127.0.0.1"
+    // ? "host.docker.internal"
+    // : host,
     pool = new Pool({
-      host:
-        host === "localhost" || host === "127.0.0.1"
-          ? "host.docker.internal"
-          : host,
+      host: host,
       port: port,
       user: user,
       password: password,

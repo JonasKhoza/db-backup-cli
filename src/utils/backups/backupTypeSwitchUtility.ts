@@ -10,7 +10,11 @@ const backupTypeSwitchUtility = (
     case "local":
       //Store under local storage
       if (commandOptions?.localPath && commandOptions?.localPath.length > 0) {
-        saveToLocalStorage(backupFile, `${commandOptions?.localPath}`);
+        const destinationPath = saveToLocalStorage(
+          backupFile,
+          `${commandOptions?.localPath}`
+        );
+        return destinationPath;
       } else {
         //console.error("Local path is not specified for local storage.");
         logger.error("Local path is not specified for local storage.");
